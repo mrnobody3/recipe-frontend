@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs_recipe_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      # Map the local directory to the container for hot-reloading
+      - .:/app
+      # Prevent the container from overwriting its node_modules with your local ones
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      # Ensures Next.js hot-reloading detects file changes inside Docker reliably
+      - WATCHPACK_POLLING=true
