@@ -1,13 +1,11 @@
 import { useUIStore } from '../useUIStore';
 
-// Atomic selectors prevent components from re-rendering unless this specific value changes
+// Atomic state selectors
 export const useIsSidebarOpen = () => useUIStore((state) => state.isSidebarOpen);
 export const useActiveModal = () => useUIStore((state) => state.activeModal);
 
-// Export actions as a single object so components don't re-render when state changes
-export const useUIActions = () =>
-  useUIStore((state) => ({
-    toggleSidebar: state.toggleSidebar,
-    openModal: state.openModal,
-    closeModal: state.closeModal,
-  }));
+// Atomic action selectors to prevent re-renders
+export const useToggleSidebar = () => useUIStore((state) => state.toggleSidebar);
+export const useSetSidebarOpen = () => useUIStore((state) => state.setSidebarOpen);
+export const useOpenModal = () => useUIStore((state) => state.openModal);
+export const useCloseModal = () => useUIStore((state) => state.closeModal);
