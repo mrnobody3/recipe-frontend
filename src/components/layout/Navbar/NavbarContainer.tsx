@@ -1,8 +1,8 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useToggleSidebar, useOpenModal } from '../../../store/hooks/useUI';
-import { MAIN_NAV_ITEMS } from '../../../constants/navigation';
+import { useToggleSidebar, useOpenModal } from '@/store/hooks/useUI';
+import { MAIN_NAV_ITEMS } from '@/constants/navigation';
 import { NavbarView } from './NavbarView';
 
 export function NavbarContainer() {

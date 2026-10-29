@@ -1,15 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { Menu, Restaurant, AddCircle, Login } from '@mui/icons-material';
-import type { NavItem } from '../../../types/navigation';
+import { AppBar, Toolbar, Typography, IconButton, Button, Box, Container } from '@mui/material';
+import { Menu } from '@mui/icons-material';
+import { SproutIcon } from '@/components/icons/SproutIcon';
+import type { NavItem } from '@/types/navigation';
+import { NavbarActions } from './NavbarActions';
 
 export interface NavbarViewProps {
   navLinks: NavItem[];
@@ -27,7 +23,7 @@ export function NavbarView({
   return (
     <AppBar position="sticky" elevation={1} color="default" sx={{ bgcolor: 'background.paper' }}>
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ justifyContent: 'space-between', minHeight: 64 }}>
+        <Toolbar disableGutters sx={{ justifyContent: 'space-between', minHeight: 88 }}>
           {/* Left section: Mobile menu icon & Brand Logo */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <IconButton
@@ -51,18 +47,18 @@ export function NavbarView({
                 color: 'inherit',
               }}
             >
-              <Restaurant color="primary" sx={{ fontSize: 28 }} />
+              <SproutIcon color="primary" sx={{ fontSize: 28 }} />
               <Typography
                 variant="h6"
                 noWrap
                 component="span"
                 sx={{
                   fontWeight: 700,
-                  letterSpacing: '.05rem',
-                  color: 'primary.main',
+                  letterSpacing: '.0rem',
+                  color: 'primary.black',
                 }}
               >
-                RecipePortal
+                смак.
               </Typography>
             </Link>
           </Box>
@@ -78,14 +74,12 @@ export function NavbarView({
                   key={item.href}
                   component={Link}
                   href={item.href}
-                  color={isActive ? 'primary' : 'inherit'}
-                  variant={isActive ? 'outlined' : 'text'}
+                  color={isActive ? 'primary' : 'secondary'}
+                  variant="text"
                   startIcon={IconComponent ? <IconComponent /> : undefined}
                   sx={{
                     fontWeight: isActive ? 600 : 500,
                     textTransform: 'none',
-                    borderRadius: 2,
-                    px: 2,
                   }}
                 >
                   {item.label}
@@ -95,35 +89,7 @@ export function NavbarView({
           </Box>
 
           {/* Right Action buttons */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Button
-              component={Link}
-              href="/recipes/create"
-              variant="contained"
-              color="primary"
-              size="small"
-              startIcon={<AddCircle />}
-              sx={{
-                textTransform: 'none',
-                fontWeight: 600,
-                borderRadius: 2,
-                display: { xs: 'none', sm: 'inline-flex' },
-              }}
-            >
-              New Recipe
-            </Button>
-
-            <Button
-              variant="outlined"
-              color="inherit"
-              size="small"
-              startIcon={<Login />}
-              onClick={onOpenLoginModal}
-              sx={{ textTransform: 'none', borderRadius: 2 }}
-            >
-              Sign In
-            </Button>
-          </Box>
+          <NavbarActions onOpenLoginModal={onOpenLoginModal} />
         </Toolbar>
       </Container>
     </AppBar>
