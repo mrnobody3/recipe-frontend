@@ -1,11 +1,11 @@
 'use client';
 
 import { Suspense, use } from 'react';
-import Container from '@mui/material/Container';
-import { useRecipeDetail, useToggleFavoriteMutation } from '../../../hooks/queries/useRecipesQuery';
-import { RecipeDetailView } from '../../../components/recipes/RecipeDetail/RecipeDetailView';
-import { LoadingState } from '../../../components/common/LoadingState';
-import { ErrorState } from '../../../components/common/ErrorState';
+import { Container } from '@mui/material';
+import { useRecipeDetail, useToggleFavoriteMutation } from '@/hooks/queries/useRecipesQuery';
+import { RecipeDetailView } from '@/components/recipes/RecipeDetail/RecipeDetailView';
+import { LoadingState } from '@/components/common/LoadingState';
+import { ErrorState } from '@/components/common/ErrorState';
 
 interface RecipePageProps {
   params: Promise<{ id: string }>;
@@ -34,12 +34,7 @@ function RecipeDetailContent({ params }: RecipePageProps) {
         />
       )}
 
-      {recipe && (
-        <RecipeDetailView
-          recipe={recipe}
-          onToggleFavorite={handleToggleFavorite}
-        />
-      )}
+      {recipe && <RecipeDetailView recipe={recipe} onToggleFavorite={handleToggleFavorite} />}
     </Container>
   );
 }

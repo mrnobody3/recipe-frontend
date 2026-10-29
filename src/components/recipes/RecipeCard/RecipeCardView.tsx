@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import { AccessTime, Bookmark, BookmarkBorder } from '@mui/icons-material';
-import type { RecipeListDto, RecipeDifficulty } from '../../../types/recipe';
+import type { RecipeListDto, RecipeDifficulty } from '@/types/recipe';
 
 interface RecipeCardViewProps {
   recipe: RecipeListDto;

@@ -2,7 +2,64 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/) installed on your machine.
+- (Optional for running without Docker) [Node.js 20+](https://nodejs.org/) and npm.
+
+### Running with Docker
+
+The easiest way to run the application is using Docker Compose, which mounts your local directory for hot-reloading and preserves container dependencies.
+
+1. **Environment Setup** (if needed):
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. **Start the development server**:
+   ```bash
+   docker compose up --build
+   ```
+   To run in the background (detached mode):
+   ```bash
+   docker compose up -d --build
+   ```
+
+3. **Open the application**:
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+4. **Useful Docker commands**:
+   - View container logs:
+     ```bash
+     docker compose logs -f
+     ```
+   - Stop containers:
+     ```bash
+     docker compose down
+     ```
+
+#### Alternative: Using Docker CLI directly
+
+Build the image:
+```bash
+docker build -t recipe-frontend .
+```
+
+Run the container:
+```bash
+docker run -p 3000:3000 -v $(pwd):/app -v /app/node_modules recipe-frontend
+```
+
+---
+
+### Running Locally (Without Docker)
+
+First, install dependencies:
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -16,7 +73,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
