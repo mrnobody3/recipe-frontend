@@ -1,7 +1,7 @@
 'use client';
 
-import { useRecipes, useToggleFavoriteMutation } from '../hooks/queries/useRecipesQuery';
-import { HomeView } from '../components/home/HomeView';
+import { useRecipes, useToggleFavoriteMutation } from '@/hooks/queries/useRecipesQuery';
+import { HomeView } from '@/components/home/HomeView';
 
 export default function HomePage() {
   const { data, isLoading } = useRecipes({ page_size: 6 });

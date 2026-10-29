@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../theme';
 import QueryProvider from '../providers/QueryProvider';
-import { AppLayout } from '../components/layout/AppLayout';
+import { AppLayout } from '@/components/layout/AppLayout';
 
 export const metadata: Metadata = {
   title: 'Recipe Portal - Discover & Share Delicious Recipes',
